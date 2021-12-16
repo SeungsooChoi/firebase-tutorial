@@ -3,7 +3,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import Auth from "../routes/Auth";
 import Home from "../routes/Home";
 
-const Router = ({ isLoggedIn }) => {
+const AppRouter = ({ isLoggedIn }) => {
   return (
     <HashRouter>
       <Routes>
@@ -19,4 +19,4 @@ const Router = ({ isLoggedIn }) => {
   );
 };
 
-export default Router;
+export default AppRouter;

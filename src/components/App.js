@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import Router from "./Router";
+import AppRouter from "components/Router";
+import { authService } from "fbase";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
 
-  return <Router isLoggedIn={isLoggedIn} />;
+  return (
+    <>
+      <AppRouter isLoggedIn={isLoggedIn} />
+      <footer>&copy; {new Date().getFullYear()} Seungsoo Choi</footer>
+    </>
+  );
 };
 
 export default App;
