@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithPopup,
 } from "firebase/auth";
 import { authService } from "fbase";
 
@@ -46,6 +48,12 @@ const Auth = () => {
 
   const toggleAccount = () => setNewAccount((prev) => !prev);
 
+  const onGoogleClick = async () => {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(authService, provider);
+    console.log(result);
+  };
+
   return (
     <>
       <form onSubmit={onSubmit}>
@@ -75,7 +83,7 @@ const Auth = () => {
         {newAccount ? "Sign In" : "Create Account"}
       </span>
       <div>
-        <button>Continue with Google</button>
+        <button onClick={onGoogleClick}>Continue with Google</button>
       </div>
     </>
   );
